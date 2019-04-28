@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>Category</item>
+        <item>Business</item>
+        <item>Entertainment</item>
+        <item>General</item>
+        <item>Health</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Technology</item>
+    </string-array>
+
+    <string-array name="language">
+        <item>Language</item>
+        <item>ar</item>
+        <item>de</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>he</item>
+        <item>it</item>
+        <item>nl</item>
+        <item>no</item>
+        <item>pt</item>
+        <item>ru</item>
+        <item>se</item>
+        <item>ud</item>
+        <item>zh</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>Country</item>
+        <item>ae</item>
+        <item>ar</item>
+        <item>at</item>
+        <item>au</item>
+        <item>be</item>
+        <item>bg</item>
+        <item>br</item>
+        <item>ca</item>
+        <item>ch</item>
+        <item>cn</item>
+        <item>co</item>
+        <item>cu</item>
+        <item>cz</item>
+        <item>de</item>
+        <item>eg</item>
+        <item>fr</item>
+        <item>gb</item>
+        <item>gr</item>
+        <item>hk</item>
+        <item>hu</item>
+        <item>id</item>
+        <item>ie</item>
+        <item>il</item>
+        <item>in</item>
+        <item>it</item>
+        <item>jp</item>
+        <item>kr</item>
+        <item>lt</item>
+        <item>lv</item>
+        <item>ma</item>
+        <item>mx</item>
+        <item>my</item>
+        <item>ng</item>
+        <item>nl</item>
+        <item>nl</item>
+        <item>no</item>
+        <item>nz</item>
+        <item>ph</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>ro</item>
+        <item>rs</item>
+        <item>ru</item>
+        <item>sa</item>
+        <item>se</item>
+        <item>sg</item>
+        <item>si</item>
+        <item>sk</item>
+        <item>th</item>
+        <item>tr</item>
+        <item>tw</item>
+        <item>ua</item>
+        <item>us</item>
+        <item>ve</item>
+        <item>za</item>
+    </string-array>
+</resources>

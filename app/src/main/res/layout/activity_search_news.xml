@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel"
+                  type="com.sample.searchnewsandroidapplication.viewmodel.SearchNewsViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:id="@+id/linear_layout_spinners_container"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_language"
+                    android:layout_width="0dp"
+                    android:entries="@array/language"
+                    android:layout_weight="1"
+                    android:selectedItemPosition="@={viewModel.languageSelectedItemPosition}"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:selectedItemPosition="@={viewModel.categorySelectedItemPosition}"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/category"
+                    android:layout_marginEnd="4dp"/>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_country"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:entries="@array/country"
+                    android:selectedItemPosition="@={viewModel.countrySelectedItemPosition}"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginStart="4dp"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_text_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:hint="@string/type_any_news"
+                android:afterTextChanged="@{(editable) -> viewModel.updateSearchTerm(editable)}"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_spinners_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+                android:id="@+id/linear_layout_buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.getTopHeadlineNews()}"
+                    android:text="@string/search_top_headlines"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="4dp"
+                    android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/search_every_news"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:onClick="@{() -> viewModel.getAllNews()}"
+                    android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/show_news_sources"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:onClick="@{() -> viewModel.getNewsFromSources()}"
+                    android:layout_marginStart="4dp"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_news"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_buttons_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/list_item_search_news"/>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_buttons_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

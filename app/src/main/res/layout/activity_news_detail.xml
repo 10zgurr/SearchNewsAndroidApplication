@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="sourceDetail"
+                  type="com.sample.searchnewsandroidapplication.model.NewsSourceItem"/>
+        <variable name="articleDetail"
+                  type="com.sample.searchnewsandroidapplication.model.NewsArticleItem"/>
+        <variable name="activity"
+                  type="com.sample.searchnewsandroidapplication.ui.NewsDetailActivity"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:visibility="@{activity.isArticleNews ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:text="@{sourceDetail.name}"
+                        android:padding="4dp"
+                        android:textColor="@color/colorAccent"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:text="@{sourceDetail.description}"
+                        android:padding="4dp"
+                        android:textColor="@color/black"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:gravity="start"
+                        android:text="@{sourceDetail.url}"
+                        android:onClick="@{(view) -> sourceDetail.onSourceNewsUrlClicked(view, sourceDetail.url)}"
+                        android:padding="4dp"
+                        android:textColor="@color/colorPrimary"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:visibility="@{activity.isArticleNews ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                        android:id="@+id/image_view_article"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone"
+                        app:imageUrl="@{articleDetail.urlToImage}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:text="@{articleDetail.title}"
+                        android:padding="4dp"
+                        android:textColor="@color/colorAccent"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:text="@{articleDetail.description}"
+                        android:padding="4dp"
+                        android:textColor="@color/colorPrimary"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="start"
+                        android:text="@{articleDetail.content}"
+                        android:padding="4dp"
+                        android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:gravity="start"
+                        android:text="@{articleDetail.url}"
+                        android:onClick="@{(view) -> articleDetail.onArticleUrlClicked(view, articleDetail.url)}"
+                        android:padding="4dp"
+                        android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="sourceitem"
+                  type="com.sample.searchnewsandroidapplication.model.NewsSourceItem"/>
+        <variable name="articleitem"
+                  type="com.sample.searchnewsandroidapplication.model.NewsArticleItem"/>
+        <variable name="adapter"
+                  type="com.sample.searchnewsandroidapplication.ui.SearchNewsAdapter"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> sourceitem.onSourceNewsClicked(view, sourceitem)}"
+                android:visibility="@{adapter.isArticleNews ? View.GONE : View.VISIBLE}"
+                android:padding="16dp">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/image_view_forward"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@{sourceitem.name}"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:text="@{sourceitem.category}"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@{sourceitem.language}"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="@{sourceitem.country}"
+                        android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/image_view_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_keyboard_arrow_right_36dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> articleitem.onArticleItemClicked(view, articleitem)}"
+                android:visibility="@{adapter.isArticleNews ? View.VISIBLE : View.GONE}"
+                android:padding="16dp">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/image_view_forward_article"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:text="@{articleitem.source.name}"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@{articleitem.title}"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@{articleitem.getNewsPublishedTime(articleitem.publishedAt)}"
+                        android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/image_view_forward_article"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_keyboard_arrow_right_36dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

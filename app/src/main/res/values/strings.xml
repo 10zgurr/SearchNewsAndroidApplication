@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SearchNewsAndroidApplication</string>
+
+    <string name="type_any_news">Type any news</string>
+    <string name="search_top_headlines">Search Top Headlines</string>
+    <string name="search_every_news">Search Every News</string>
+    <string name="show_news_sources">Show News Sources</string>
+    <string name="empty_input_desc">Please type any keyword to search</string>
+</resources>
