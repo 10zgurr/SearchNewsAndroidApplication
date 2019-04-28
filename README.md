@@ -28,4 +28,4 @@ And for app design:
 
 
 
-*This sample Android application gets data from "https://newsapi.org" RESTFUL API services.
+*This sample Android application uses "https://newsapi.org" RESTFUL API services.
